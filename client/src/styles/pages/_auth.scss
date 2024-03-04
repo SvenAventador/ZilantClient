@@ -1,0 +1,111 @@
+@import "../functions/mini";
+.auth-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../image/authBack.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__left-image {
+    width: 400px;
+    height: 500px;
+    margin-right: 5rem;
+  }
+
+  &__right-content {
+    @include flex-column-center;
+    width: 650px;
+    height: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  &__logo {
+    @include flex-all-center;
+    margin-bottom: 20px;
+  }
+
+  &__logo-image {
+    width: 50px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+
+  &__logo-image:first-child {
+    margin-right: 1.5rem;
+  }
+
+  &__team-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__inputs {
+    @include flex-column-center;
+    margin-bottom: 20px;
+
+    &--text {
+      color: #162746;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__inputs input {
+    font-family: 'Roboto', sans-serif;
+    color: #162746;
+    font-size: 1.2rem;
+    margin: 15px auto;
+    padding: 1.1rem 2rem;
+    border-radius: .7rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    width: 400px;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  &__auth-button {
+    padding: 20px 80px;
+    background-color: #162746;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  &__change-button {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #162746;
+    text-decoration: underline;
+    margin-top: 30px;
+  }
+}
