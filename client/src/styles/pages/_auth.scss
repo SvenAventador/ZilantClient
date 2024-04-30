@@ -1,0 +1,117 @@
+.auth-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.auth-page__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/img/authBack.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.auth-page__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.auth-page__left-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.auth-page__right-content {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  margin-left: 3rem;
+}
+
+.auth-page__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.auth-page__logo-image {
+  width: 50px;
+  height: 70px;
+  margin-right: 1.5rem;
+}
+
+.auth-page__team-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.auth-page__inputs {
+  margin-bottom: 20px;
+}
+
+.auth-page__inputs--text {
+  color: #162746;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.auth-page__input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 15px auto;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+
+.auth-page__auth-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  background-color: #162746;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.auth-page__auth-button:hover {
+  background-color: #0056b3;
+}
+
+.auth-page__change-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: #162746;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin-top: 1rem;
+}
+
+.auth-page__change-button:hover {
+  color: #0056b3;
+}
