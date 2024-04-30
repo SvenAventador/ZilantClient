@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ZilantClient/static/css/main.bd6b9a2f.css",
-    "main.js": "/ZilantClient/static/js/main.9948c91a.js",
-    "static/media/authBack.png": "/ZilantClient/static/media/authBack.48ac2069f0fcbd0ed50e.png",
-    "static/media/logo.png": "/ZilantClient/static/media/logo.cd4b98ddbe966900ffd8.png",
-    "static/media/player.png": "/ZilantClient/static/media/player.50415ec84baf13e24915.png",
-    "index.html": "/ZilantClient/index.html",
-    "main.bd6b9a2f.css.map": "/ZilantClient/static/css/main.bd6b9a2f.css.map",
-    "main.9948c91a.js.map": "/ZilantClient/static/js/main.9948c91a.js.map"
+    "main.css": "/git/static/css/main.b38226c2.css",
+    "main.js": "/git/static/js/main.9dcb12c5.js",
+    "static/media/authBack.png": "/git/static/media/authBack.48ac2069f0fcbd0ed50e.png",
+    "static/media/logo.png": "/git/static/media/logo.cd4b98ddbe966900ffd8.png",
+    "static/media/player.png": "/git/static/media/player.50415ec84baf13e24915.png",
+    "index.html": "/git/index.html",
+    "main.b38226c2.css.map": "/git/static/css/main.b38226c2.css.map",
+    "main.9dcb12c5.js.map": "/git/static/js/main.9dcb12c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd6b9a2f.css",
-    "static/js/main.9948c91a.js"
+    "static/css/main.b38226c2.css",
+    "static/js/main.9dcb12c5.js"
   ]
 }
