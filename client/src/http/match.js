@@ -4,7 +4,7 @@ import {
 } from "./index";
 
 export const getOne = async (id) => {
-    const {data} = await $host.get(`api/match/one${id}`)
+    const {data} = await $host.get(`api/match/one?id=${id}`)
     return data
 }
 

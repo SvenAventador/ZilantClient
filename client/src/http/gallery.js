@@ -9,12 +9,17 @@ export const getOne = async (id) => {
 }
 
 export const getAll = async () => {
-    const {data} = await $host.get('api/gallery')
+    const {data} = await $host.get('api/gallery/all')
+    return data
+}
+
+export const getAllWithImages = async () => {
+    const {data} = await $host.get('api/gallery/images')
     return data
 }
 
 export const create = async (gallery) => {
-    const {data} = await $authHost.post('api/news', gallery)
+    const {data} = await $authHost.post('api/gallery', gallery)
     return data
 }
 

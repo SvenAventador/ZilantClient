@@ -1,23 +1,26 @@
 import React from 'react';
-import {useUser} from "./stores/User";
+import {useUser} from "./store/User";
 import logo from './assets/img/logo.png'
 import SiteNavigation from "./components/Routes";
 
 const App = () => {
     const [isLoading, setIsLoading] = React.useState(true)
-    const {checkUser} = useUser()
+    let {
+        checkUser
+    } = useUser()
 
     React.useEffect(() => {
-        if (localStorage.getItem('token'))
+        if (localStorage.getItem('token')) {
             setTimeout(() => {
                 checkUser().finally(() => {
                     setIsLoading(false)
                 })
             }, 2500)
-        else
+        } else {
             setTimeout(() => {
                 setIsLoading(false)
             }, 2500)
+        }
     }, [checkUser])
 
     if (isLoading) {
@@ -30,7 +33,7 @@ const App = () => {
     }
 
     return (
-        <SiteNavigation />
+        <SiteNavigation/>
     );
 };
 

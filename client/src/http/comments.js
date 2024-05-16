@@ -5,8 +5,8 @@ export const getAll = async () => {
     return data
 }
 
-export const create = async (newsId, comment) => {
-    const {data} = await $host.post(`api/comment/${newsId}`, comment)
+export const create = async (newsId, newsComment, userId) => {
+    const {data} = await $host.post(`api/comment/${newsId}`, {newsComment, userId})
     return data
 }
 

@@ -1,0 +1,11 @@
+.table {
+  &__container {
+    width: 1430px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+
+  &-row {
+    @include flex-all-sb
+  }
+}

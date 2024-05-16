@@ -1,5 +1,0 @@
-export const MAIN_PATH = '/'
-export const LOGIN_PATH = '/login'
-export const REGISTRATION_PATH = '/registration'
-export const ADMIN_PATH = '/admin'
-export const PERSONAL_PATH = '/account'

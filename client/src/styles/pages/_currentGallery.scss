@@ -1,0 +1,11 @@
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.image-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

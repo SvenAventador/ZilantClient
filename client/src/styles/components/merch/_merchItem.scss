@@ -1,0 +1,41 @@
+.merch {
+  &-item {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &__image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-info {
+    &__header {
+      font-size: 25px;
+      font-family: 'Comic Sans MS', sans-serif;
+      font-weight: bold;
+      border-bottom: 1px solid #ececec;
+      padding-bottom: 1rem;
+    }
+
+    &__detail {
+      font-size: 20px;
+      margin-top: 5px;
+      font-family: 'Comic Sans MS', sans-serif;
+    }
+  }
+}

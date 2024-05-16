@@ -1,8 +1,34 @@
-@import "./func/mixins";
-
-@import "globals";
+/*base*/
+@import "fonts";
+@import "global";
 @import "overalls";
 @import "vars";
-@import "vendors";
 
+/*mixins*/
+@import "functions/mini";
+@import "functions/font-face";
+
+/*pages*/
 @import "pages/auth";
+@import "pages/news";
+@import "pages/currentNews";
+@import "pages/championship";
+@import "pages/command";
+@import "pages/media";
+@import "pages/currentGallery";
+@import "pages/merch";
+
+/*components*/
+@import "./components/global/header";
+@import "./components/global/modal";
+@import "./components/news/newsItem";
+@import "./components/news/newsList";
+@import "./components/command/commandItem";
+@import "./components/command/commandList";
+@import "./components/media/mediaItem";
+@import "./components/media/mediaList";
+@import "./components/merch/merchItem";
+@import "./components/merch/merchList";
+
+/*vendor*/
+@import "vendors";
