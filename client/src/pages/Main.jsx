@@ -1,9 +1,12 @@
 import React from 'react';
+import MainNews from "../components/user/main/MainNews";
 
 const Main = () => {
     return (
-        <div>
-            Главая
+        <div className="main">
+            <div className="main__container">
+                <MainNews/>
+            </div>
         </div>
     );
 };

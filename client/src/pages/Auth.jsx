@@ -138,7 +138,7 @@ const AuthPage = () => {
 
                         <button className="btn-reset auth-page__change-button"
                                 onClick={toggleButton}>
-                            {isLogin ? 'Уже есть аккаунт? Войдите!' : 'Нет аккаунта? Зарегистрируйтесь!'}
+                            {!isLogin ? 'Уже есть аккаунт? Войдите!' : 'Нет аккаунта? Зарегистрируйтесь!'}
                         </button>
                     </div>
                 </div>

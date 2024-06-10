@@ -1,0 +1,10 @@
+.main {
+  width: 100vw;
+  height: max-content;
+  background-color: #d0d0d0;
+  &__container {
+    width: 1430px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+}

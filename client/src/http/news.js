@@ -8,6 +8,11 @@ export const getOne = async (id) => {
     return data
 }
 
+export const getRandom = async () => {
+    const {data} = await $host.get('api/news/random')
+    return data
+}
+
 export const getAll = async () => {
     const {data} = await $host.get('api/news')
     return data

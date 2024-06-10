@@ -17,6 +17,7 @@
 @import "pages/media";
 @import "pages/currentGallery";
 @import "pages/merch";
+@import "pages/main";
 
 /*components*/
 @import "./components/global/header";
@@ -29,6 +30,7 @@
 @import "./components/media/mediaList";
 @import "./components/merch/merchItem";
 @import "./components/merch/merchList";
+@import "./components/main/mainNews.jsx";
 
 /*vendor*/
 @import "vendors";
