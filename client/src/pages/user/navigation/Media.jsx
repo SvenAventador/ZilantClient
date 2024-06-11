@@ -5,7 +5,15 @@ const Media = () => {
     return (
         <div className="gallery">
             <div className="gallery__container">
-                <MediaList />
+                <h1 style={{
+                    fontFamily: 'Raleway, sans-serif',
+                    fontWeight: 'bolder',
+                    fontSize: '30pt',
+                    color: '#162746'
+                }}>
+                    Наша галерея
+                </h1>
+                <MediaList/>
             </div>
         </div>
     );

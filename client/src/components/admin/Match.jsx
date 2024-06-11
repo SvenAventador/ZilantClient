@@ -202,17 +202,6 @@ const Match = () => {
                                        }}>
                                    Добавить матч
                                </Button>
-                               <Popconfirm title="Вы уверены, что хотите удалить все матчи?"
-                                           onConfirm={confirmAllMatch}
-                                           okText="Да"
-                                           cancelText="Отмена">
-                                   <Button style={{
-                                       backgroundColor: 'red',
-                                       color: 'white'
-                                   }}>
-                                       Удалить все матчи
-                                   </Button>
-                               </Popconfirm>
                            </Space>
                        )
                    }}

@@ -1,19 +1,26 @@
 import React from 'react';
+import Modal from "../../modal/Modal";
 
 const CommandItem = (props) => {
     const {
-        players
+        player
     } = props
 
+    const [active, setActive] = React.useState(false);
+
     return (
-        <div className="players-item">
-            <img className="players-item__image"
-                 src={`${process.env.REACT_APP_API_PATH}${players.playerImage}`}
-                 alt="News Thumbnail"/>
-            <h3 className="players-item__name">{players.playerSurname} {players.playerName} {players.playerPatronymic ? players.playerPatronymic : ''}</h3>
-            <h3 className="players-item__number">Игровой номер: {players.playerNumber}</h3>
-            <h3 className="players-item__position">Позиция игрока: {players.playerPosition}</h3>
-        </div>
+        <>
+            <div className="players-item" onClick={() => {setActive(true)}}>
+                <img className="players-item__image"
+                     src={`${process.env.REACT_APP_API_PATH}${player.playerImage}`}
+                     alt="News Thumbnail"/>
+            </div>
+            <Modal active={active} setActive={setActive}>
+                <h3 className="players-item__name"> Фамилия Имя Отчество игрока: {player.playerSurname} {player.playerName} {player.playerPatronymic ? player.playerPatronymic : ''}</h3>
+                <h3 className="players-item__number">Игровой номер: {player.playerNumber}</h3>
+                <h3 className="players-item__position">Позиция игрока: {player.playerPosition}</h3>
+            </Modal>
+        </>
     );
 };
 

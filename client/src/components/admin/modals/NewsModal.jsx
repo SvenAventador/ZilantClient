@@ -10,63 +10,71 @@ import {UploadOutlined} from "@ant-design/icons";
 import {useNews} from "../../../store/News";
 
 const NewsModal = (props) => {
-    const [api, contextHolder] = notification.useNotification()
+    const [api, contextHolder] = notification.useNotification();
     const {
         open,
         closeModal,
         oneNews
-    } = props
+    } = props;
     const {
         createNews,
         updateNews
-    } = useNews()
+    } = useNews();
 
-    const [newsTitle, setNewsTitle] = React.useState(oneNews?.newsTitle || '')
-    const [newsImage, setNewsImage] = React.useState([])
-    const [newsChapter, setNewsChapter] = React.useState([])
+    const [newsTitle, setNewsTitle] = React.useState(oneNews?.newsTitle || '');
+    const [newsDescription, setNewsDescription] = React.useState(oneNews?.newsDescription || '');
+    const [newsImage, setNewsImage] = React.useState([]);
+    const [newsChapter, setNewsChapter] = React.useState([]);
 
     const handleAddContent = () => {
-        setNewsChapter([...newsChapter, {newsChapter: ''}])
-    }
+        setNewsChapter([...newsChapter, {newsChapter: ''}]);
+    };
 
     const handleRemoveContent = (index) => {
-        const updatedContent = newsChapter.filter((_, i) => i !== index)
-        setNewsChapter(updatedContent)
-    }
+        const updatedContent = newsChapter.filter((_, i) => i !== index);
+        setNewsChapter(updatedContent);
+    };
 
     const handleChangeContent = (index, value) => {
-        const updatedContent = [...newsChapter]
-        updatedContent[index].newsChapter = value
-        setNewsChapter(updatedContent)
-    }
+        const updatedContent = [...newsChapter];
+        updatedContent[index].newsChapter = value;
+        setNewsChapter(updatedContent);
+    };
 
     React.useEffect(() => {
         if (oneNews) {
-            setNewsTitle(oneNews?.newsTitle)
+            setNewsTitle(oneNews?.newsTitle);
+            setNewsDescription(oneNews?.newsDescription);
             setNewsImage(oneNews.newsImage ? [{
                 uid: '-1',
                 name: 'Изображение новости',
                 status: 'done',
                 url: `${process.env.REACT_APP_API_PATH}/${oneNews.newsImage}`
-            }] : [])
+            }] : []);
         } else {
-            setNewsTitle('')
-            setNewsImage([])
+            setNewsTitle('');
+            setNewsDescription('');
+            setNewsImage([]);
         }
-    }, [oneNews])
+    }, [oneNews]);
 
     const handleUpload = ({file}) => {
-        setNewsImage([file])
-        return false
-    }
+        setNewsImage([file]);
+        return false;
+    };
+
+    const handleRemove = () => {
+        setNewsImage([]);
+    };
 
     React.useEffect(() => {
         if (!open) {
-            setNewsTitle('')
-            setNewsImage([])
+            setNewsTitle('');
+            setNewsDescription('');
+            setNewsImage([]);
             setNewsChapter([]);
         }
-    }, [open])
+    }, [open]);
 
     const insertOrUpdateNews = () => {
         if (!newsTitle) {
@@ -77,7 +85,18 @@ const NewsModal = (props) => {
                 style: {
                     width: 600
                 }
-            })
+            });
+        }
+
+        if (!newsDescription) {
+            return api.error({
+                message: 'Внимание!',
+                description: 'Пожалуйста, введите описание новости!',
+                className: 'custom-class',
+                style: {
+                    width: 600
+                }
+            });
         }
 
         if (!newsImage.length) {
@@ -88,7 +107,7 @@ const NewsModal = (props) => {
                 style: {
                     width: 600
                 }
-            })
+            });
         }
 
         if (!oneNews && !newsChapter.length) {
@@ -99,24 +118,25 @@ const NewsModal = (props) => {
                 style: {
                     width: 600
                 }
-            })
+            });
         }
 
         if (!oneNews && newsChapter.some(content => !content.newsChapter)) {
             return api.error({
                 message: 'Внимание!',
-                description: 'Пожалуйста, заполните все поля для  предназначенные для абзацев!',
+                description: 'Пожалуйста, заполните все поля для предназначенные для абзацев!',
                 className: 'custom-class',
                 style: {
                     width: 600
                 }
-            })
+            });
         }
 
-        const news = new FormData()
-        news.append('newsTitle', newsTitle)
-        news.append('newsImage', newsImage[0])
-        !oneNews && news.append('newsContent', JSON.stringify(newsChapter))
+        const news = new FormData();
+        news.append('newsTitle', newsTitle);
+        news.append('newsDescription', newsDescription);
+        news.append('newsImage', newsImage[0]);
+        !oneNews && news.append('newsContent', JSON.stringify(newsChapter));
 
         if (oneNews) {
             updateNews(oneNews.id, news).then(() => {
@@ -127,9 +147,9 @@ const NewsModal = (props) => {
                     style: {
                         width: 600
                     }
-                })
+                });
 
-                closeModal()
+                closeModal();
             }).catch((error) => {
                 api.error({
                     message: 'Внимание!',
@@ -138,8 +158,8 @@ const NewsModal = (props) => {
                     style: {
                         width: 600
                     }
-                })
-            })
+                });
+            });
         } else {
             createNews(news).then(() => {
                 api.success({
@@ -149,9 +169,9 @@ const NewsModal = (props) => {
                     style: {
                         width: 600
                     }
-                })
+                });
 
-                closeModal()
+                closeModal();
             }).catch((error) => {
                 api.error({
                     message: 'Внимание!',
@@ -160,10 +180,10 @@ const NewsModal = (props) => {
                     style: {
                         width: 600
                     }
-                })
-            })
+                });
+            });
         }
-    }
+    };
 
     return (
         <>
@@ -197,6 +217,12 @@ const NewsModal = (props) => {
                            marginBottom: '1rem'
                        }}
                        placeholder="Введите заголовок новости..."/>
+                <Input.TextArea value={newsDescription}
+                                onChange={(e) => setNewsDescription(e.target.value)}
+                                style={{
+                                    marginBottom: '1rem'
+                                }}
+                                placeholder="Введите описание новости..."/>
                 <Upload customRequest={handleUpload}
                         fileList={newsImage}
                         maxCount={1}
@@ -204,7 +230,8 @@ const NewsModal = (props) => {
                             marginBottom: '1rem'
                         }}
                         accept=".png,.jpg,.jpeg"
-                        listType="picture">
+                        listType="picture"
+                        onRemove={handleRemove}>
                     <Button icon={<UploadOutlined/>}>
                         Выбрать изображение (максимум 1)
                     </Button>

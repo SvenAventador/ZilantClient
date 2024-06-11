@@ -1,0 +1,53 @@
+.calendar {
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calendar-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.matches-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.matches-of-day {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-right: 10px;
+  background-color: #FFFFFF;
+}
+
+.day-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.today {
+  background-color: #e0f3ff;
+}
+
+.match {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.no-match {
+  font-style: italic;
+  color: #888;
+}

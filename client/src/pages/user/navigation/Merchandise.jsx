@@ -5,7 +5,15 @@ const Merchandise = () => {
     return (
         <div className="merch">
             <div className="merch__container">
-                <MerchList />
+                <h1 style={{
+                    fontFamily: 'Raleway, sans-serif',
+                    fontWeight: 'bolder',
+                    fontSize: '30pt',
+                    color: '#162746'
+                }}>
+                    Мерч
+                </h1>
+                <MerchList/>
             </div>
         </div>
     );

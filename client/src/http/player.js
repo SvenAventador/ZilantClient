@@ -13,6 +13,21 @@ export const getAll = async () => {
     return data
 }
 
+export const getAllGoalkeeper = async () => {
+    const {data} = await $host.get('api/player/goalkeepers')
+    return data
+}
+
+export const getAllDefender = async () => {
+    const {data} = await $host.get('api/player/defender')
+    return data
+}
+
+export const getAllAttack = async () => {
+    const {data} = await $host.get('api/player/attack')
+    return data
+}
+
 export const create = async (player) => {
     const {data} = await $authHost.post('api/player', player)
     return data

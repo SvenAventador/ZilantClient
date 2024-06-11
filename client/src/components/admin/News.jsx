@@ -146,15 +146,32 @@ const News = () => {
         <>
             {contextHolder}
             <Table columns={column}
-                   dataSource={news.map((news) => ({
-                           ...news, key: news.id
-                       })
-                   )}
+                   dataSource={
+                       news.map((news) => ({
+                               ...news,
+                               key: news.id
+                           })
+                       )}
                    expandable={{
                        expandedRowRender: (record) => {
                            return (
-                               <Image width={350}
-                                      src={`${process.env.REACT_APP_API_PATH}/${record.newsImage}`}/>
+                               <div style={{
+                                   display: "flex",
+                                   flexFlow: 'row wrap'
+                               }}>
+                                   <div style={{
+                                       marginRight: '1rem'
+                                   }}>
+                                       <Image width={350}
+                                              src={`${process.env.REACT_APP_API_PATH}/${record.newsImage}`}/>
+                                   </div>
+                                   <>
+                                       <p>
+                                           {record?.newsDescription}
+                                       </p>
+                                   </>
+                               </div>
+
                            )
                        },
                        rowExpandable: (record) => record.newsImage !== null

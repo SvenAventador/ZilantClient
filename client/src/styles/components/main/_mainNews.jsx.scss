@@ -1,9 +1,27 @@
 .main-news {
-  padding-top: 2rem;
+  margin-top: 2rem;
+  width: 100%;
 
   &__left {
     margin: 0;
     padding: 0;
     height: max-content;
+  }
+
+  &__right {
+    padding: 2rem;
+
+
+    & button {
+      color: #000;
+      background-color: #FFF;
+      transition: background-color .5s ease-in-out
+    }
+
+    & button:hover {
+      color: #FFFFFF;
+      background-color: #1F3867;
+      transition: background-color .5s ease-in-out;
+    }
   }
 }

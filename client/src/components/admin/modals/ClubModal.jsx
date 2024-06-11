@@ -89,7 +89,6 @@ const ClubModal = (props) => {
         const club = new FormData()
         club.append('clubName', clubName)
         club.append('clubImage', fileList[0])
-        oneClub && club.append('clubPoint', clubPoint)
 
         if (oneClub) {
             updateClub(oneClub.id, club).then(() => {
@@ -167,20 +166,6 @@ const ClubModal = (props) => {
                        style={{marginBottom: '1rem'}}
                        placeholder="Введите название клуба..."
                 />
-                {
-                    oneClub && <Input value={clubPoint}
-                                      onChange={(e) => {
-                                          const onlyNumbers = e.target.value.replace(/[^0-9]/g, '')
-                                          setClubPoint(onlyNumbers)
-                                      }}
-                                      maxLength={7}
-                                      style={{
-                                          marginBottom: '1rem'
-                                      }}
-                                      placeholder="Введите количество очков клуба..."
-                                      prefix='кол-во'
-                    />
-                }
                 <Upload customRequest={handleUpload}
                         fileList={fileList}
                         maxCount={1}

@@ -26,6 +26,7 @@ import Player from "../../components/admin/Player";
 import Match from "../../components/admin/Match";
 import Gallery from "../../components/admin/Gallery";
 import Merchandise from "../../components/admin/Merchandise";
+import Personal from "../../components/admin/Personal";
 
 const Admin = () => {
     const history = useNavigate()
@@ -68,7 +69,18 @@ const Admin = () => {
         getItem('Мерч', '4', <ShopOutlined/>, () => setSelectedMenuItem('merchandise')),
         getItem('Новости', '5', <ReadOutlined/>, () => setSelectedMenuItem('news')),
         getItem('Игроки', '6', <UserOutlined/>, () => setSelectedMenuItem('players')),
-        getItem('Выход', '7', <LogoutOutlined/>, handleLogout),
+        getItem('Руководство', '7', <UserOutlined />, ()=> setSelectedMenuItem('team')),
+        getItem('Выход', '8', <LogoutOutlined/>, () => {
+            logoutUser().then(() => {
+                Swal.fire({
+                    title: "Внимание",
+                    text: 'До скорых встреч, друг! Ждем тебя снова! ❤️',
+                    icon: "success"
+                }).then(() => {
+                    history(MAIN_PATH);
+                })
+            })
+        })
     ]
 
     return (
@@ -106,6 +118,7 @@ const Admin = () => {
                     {selectedMenuItem === 'players' && <Player/>}
                     {selectedMenuItem === 'matches' && <Match/>}
                     {selectedMenuItem === 'galleries' && <Gallery/>}
+                    {selectedMenuItem === 'team' && <Personal />}
                 </Layout.Content>
             </Layout>
         </Layout>

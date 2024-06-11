@@ -5,7 +5,13 @@
     margin: 0 auto;
   }
 
+  &__containers {
+    width: 1430px;
+    margin: 0 auto;
+  }
+
   &-row {
     @include flex-all-sb
   }
 }
+

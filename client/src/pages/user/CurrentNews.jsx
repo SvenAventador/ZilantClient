@@ -62,7 +62,9 @@ const CurrentNews = () => {
         <div className="news-container">
             {contextHolder}
             {currentNews && (
-                <>
+                <div style={{
+                    width: '100%'
+                }}>
                     <Image src={`${process.env.REACT_APP_API_PATH}${currentNews.newsImage}`}
                            alt="Изображение новости"
                            className="news-image"/>
@@ -74,31 +76,37 @@ const CurrentNews = () => {
                             </p>
                         ))}
                     </div>
-                    <div className="comments-section">
-                        <h3>Комментарии</h3>
-                        <div className="new-comment">
-                            <input type="text" placeholder="Введите ваш комментарий..."
-                                   value={comment}
-                                   onChange={(e) => setComment(e.target.value)}
-                                   className="comment-input"/>
-                            <button className="comment-button"
-                                    onClick={createComments}>
-                                Отправить
-                            </button>
-                        </div>
-                        {currentNews && currentNews.news_comments && currentNews.news_comments.map(comment => (
-                            <div key={comment.id}
-                                 className="comment">
-                                <p>
-                                    <strong>
-                                        {comment.user.userName || 'Анонимный пользователь'}:
-                                    </strong>
-                                    {comment.newsComment}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </>
+                    {
+                        user && user.isAuth && (
+                            <>
+                                <div className="comments-section">
+                                    <h3>Комментарии</h3>
+                                    <div className="new-comment">
+                                        <input type="text" placeholder="Введите ваш комментарий..."
+                                               value={comment}
+                                               onChange={(e) => setComment(e.target.value)}
+                                               className="comment-input"/>
+                                        <button className="comment-button"
+                                                onClick={createComments}>
+                                            Отправить
+                                        </button>
+                                    </div>
+                                    {currentNews && currentNews.news_comments && currentNews.news_comments.map(comment => (
+                                        <div key={comment.id}
+                                             className="comment">
+                                            <p>
+                                                <strong>
+                                                    {comment.user.userName || 'Анонимный пользователь'}:
+                                                </strong>
+                                                {comment.newsComment}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        )
+                    }
+                </div>
             )}
         </div>
     );

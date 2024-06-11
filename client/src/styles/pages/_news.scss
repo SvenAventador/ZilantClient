@@ -3,6 +3,6 @@
     width: 1430px;
     padding: 0 40px;
     margin: 0 auto;
-    @include flex-row-start;
+    @include flex-column-start;
   }
 }

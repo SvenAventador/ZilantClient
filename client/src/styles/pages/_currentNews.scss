@@ -1,8 +1,7 @@
 .news-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 1430px;
+  padding: 0 40px;
+  margin: 2rem auto;
 }
 
 .news-image {
@@ -12,17 +11,21 @@
 }
 
 .news-title {
-  font-size: 24px;
+  font-size: 40pt;
   font-weight: bold;
-  margin-bottom: 10px;
   word-wrap: break-word;
+  text-align: left;
+  text-indent: 20pt;
+  margin-bottom: 3rem;
 }
 
 .news-content p {
-  text-indent: 20px;
+  text-indent: 20pt;
   color: #333;
   text-align: justify;
   line-height: 1.6;
+  font-size: 25pt;
+  word-wrap: break-word;
 }
 
 .comments-section {

@@ -23,14 +23,7 @@ const PlayerModal = (props) => {
 
     React.useEffect(() => {
         if (!open && !onePlayer) {
-            form.setFieldsValue({
-                playerSurname: '',
-                playerName: '',
-                playerPatronymic: '',
-                playerNumber: '',
-                playerPosition: 'Нападающий'
-            })
-
+            form.resetFields()
             setPlayerImage([])
         }
     }, [form, open, onePlayer])
@@ -54,17 +47,16 @@ const PlayerModal = (props) => {
                         url: `${process.env.REACT_APP_API_PATH}${onePlayer.playerImage}`
                     }
                 ])
-            } else {
-                form.setFieldsValue({
-                    playerSurname: '',
-                    playerName: '',
-                    playerPatronymic: '',
-                    playerNumber: '',
-                    playerPosition: 'Нападающий'
-                })
-
-                setPlayerImage([])
             }
+        } else {
+            form.setFieldsValue({
+                playerSurname: '',
+                playerName: '',
+                playerPatronymic: '',
+                playerNumber: '',
+                playerPosition: 'Нападающий'
+            })
+            setPlayerImage([])
         }
     }, [form, onePlayer, open])
 
@@ -73,7 +65,7 @@ const PlayerModal = (props) => {
         return false
     }
 
-    const updateOrInsetData = async () => {
+    const updateOrInsertData = async () => {
         const values = await form.validateFields()
         if (!playerImage.length) {
             return api.error({
@@ -150,7 +142,10 @@ const PlayerModal = (props) => {
                    title={onePlayer ? 'Редактирование игрока' : 'Добавление игрока'}>
                 <Form form={form}
                       layout={"vertical"}
-                      onFinish={updateOrInsetData}
+                      onFinish={updateOrInsertData}
+                      initialValues={{
+                          playerPosition: 'Нападающий'
+                      }}
                       autoComplete={"off"}>
                     <Form.Item label='Фамилия игрока'
                                name='playerSurname'
@@ -190,10 +185,10 @@ const PlayerModal = (props) => {
                                rules={[
                                    {
                                        required: true,
-                                       message: 'Пожалуйста, введите позицию игрока!'
+                                       message: 'Пожалуйста, выберите позицию игрока!'
                                    }
                                ]}>
-                        <Select defaultValue='Нападающий'>
+                        <Select>
                             <Option value={"Нападающий"}>
                                 Нападающий
                             </Option>
