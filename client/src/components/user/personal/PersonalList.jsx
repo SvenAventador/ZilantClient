@@ -18,34 +18,31 @@ const PersonalList = () => {
 
     return (
         <div className="players-list">
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-            }}>
-                {
-                    loading ? (
-                        <h2>Идет поиск руководства клуба
-                        </h2>
-                    ) : (
-                        <>
-                            {persons.length > 0 ? (
-                                <div className="players-list__grid" style={{
-                                    marginBottom: '1rem'
-                                }}>
-                                    {persons.map((person) => (
-                                        <PersonalItem key={person.id} person={person}/>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p>На наддый момент идет поиск руковосдтва клуба. Пожалуйста, обратитесь к этому разделу
-                                    чуточку
-                                    позднее!</p>
-                            )}
-                        </>
-                    )
-                }
-
-            </div>
+            {
+                loading ? (
+                    <h2>
+                        Идет поиск руководства клуба
+                    </h2>
+                ) : (
+                    <>
+                        {persons.length > 0 ? (
+                            <div className="players-list__grid"
+                                 style={{
+                                     marginBottom: '1rem'
+                                 }}>
+                                {persons.map((person) => (
+                                    <PersonalItem key={person.id} person={person}/>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>
+                                На наддый момент идет поиск руковосдтва клуба. Пожалуйста, обратитесь к этому разделу
+                                чуточку позднее!
+                            </p>
+                        )}
+                    </>
+                )
+            }
         </div>
     );
 };

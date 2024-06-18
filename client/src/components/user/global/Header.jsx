@@ -5,18 +5,23 @@ import {ReactComponent as Telegram} from "../../../assets/img/header/socials/tg.
 import {ReactComponent as VKontakte} from "../../../assets/img/header/socials/vk.svg";
 import {ReactComponent as YouTube} from "../../../assets/img/header/socials/youtube.svg";
 import {ReactComponent as Auth} from "../../../assets/img/header/auth.svg";
+import {ReactComponent as Cart} from "../../../assets/img/header/cart.svg";
+
 import {
     NavLink,
     useNavigate
 } from "react-router-dom";
 import {
+    CART_PATH,
     CHAMPIONSHIP_PATH,
     CLUB_PATH,
-    COMMAND_PATH, LOGIN_PATH,
+    COMMAND_PATH,
+    LOGIN_PATH,
     MAIN_PATH,
     MEDIA_PATH,
     MERCHANDISE_PATH,
-    NEWS_PATH, PERSONAL_PATH
+    NEWS_PATH,
+    PERSONAL_PATH
 } from "../../../utils/utils";
 import {useUser} from "../../../store/User";
 
@@ -46,13 +51,32 @@ const Header = () => {
                              alt="logo"/>
                         <span>ХК КАИ Зилант</span>
                     </div>
-                    <div className="header__middle-right"
-                         onClick={() => {
-                             user ? history(`${PERSONAL_PATH}/${user.id}`) : history(LOGIN_PATH);
-                         }}>
-                        <Auth/>
-                        <span>{user ? user.userName : 'Войти'}</span>
+                    <div style={{
+                        display: "flex",
+                        flexFlow: "row wrap",
+                        alignItems: "center"
+                    }}>
+                        {
+                            user && (
+                                <div className="header__middle-right"
+                                     style={{
+                                         marginRight: '1rem'
+                                     }}
+                                     onClick={() => history(CART_PATH + "/" + user.id)}>
+                                <Cart/>
+                                <span>Корзина</span>
+                            </div>
+                            )
+                        }
+                        <div className="header__middle-right"
+                             onClick={() => {
+                                 user ? history(`${PERSONAL_PATH}/${user.id}`) : history(LOGIN_PATH);
+                             }}>
+                            <Auth/>
+                            <span>{user ? user.userName : 'Войти'}</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div className="header__bottom">

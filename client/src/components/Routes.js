@@ -5,10 +5,12 @@ import {
     Route
 } from "react-router-dom";
 import {
-    ADMIN_PATH,
+    ADMIN_PATH, CART_PATH,
     CHAMPIONSHIP_PATH,
     CLUB_PATH,
-    COMMAND_PATH, CURRENT_NEWS_PATH, GALLERY_PATH,
+    COMMAND_PATH,
+    CURRENT_NEWS_PATH,
+    GALLERY_PATH,
     LOGIN_PATH,
     MAIN_PATH,
     MEDIA_PATH,
@@ -30,6 +32,7 @@ import Merchandise from "../pages/user/navigation/Merchandise";
 import News from "../pages/user/navigation/News";
 import CurrentNews from "../pages/user/CurrentNews";
 import CurrentGallery from "../pages/user/CurrentGallery";
+import Cart from "../pages/user/Cart";
 
 const Layout = ({children}) => {
     return (
@@ -70,6 +73,12 @@ const SiteNavigation = () => {
                        element={
                            <Layout>
                                <CurrentGallery/>
+                           </Layout>
+                       }/>
+                <Route path={CART_PATH + '/:id'}
+                       element={
+                           <Layout>
+                               <Cart/>
                            </Layout>
                        }/>
                 <Route path={CHAMPIONSHIP_PATH}

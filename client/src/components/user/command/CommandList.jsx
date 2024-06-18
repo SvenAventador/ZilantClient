@@ -5,31 +5,24 @@ import {getAllAttack, getAllDefender, getAllGoalkeeper} from "../../../http/play
 
 const CommandList = () => {
     const {getAllPlayer} = usePlayer();
-    const [allPlayers, setAllPlayers] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
-    const [allGoalkeeoper, setAllGoalkeeoper] = React.useState([]);
-    const [allDefender, setAllDefender] = React.useState([]);
-    const [allAttachment, setAllAttachment] = React.useState([]);
+    const [allGoalkeepers, setAllGoalkeepers] = React.useState([]);
+    const [allDefenders, setAllDefenders] = React.useState([]);
+    const [allAttackers, setAllAttackers] = React.useState([]);
 
     React.useEffect(() => {
         getAllGoalkeeper().then(({goalkeepers}) => {
-            setAllGoalkeeoper(goalkeepers);
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
+            setAllGoalkeepers(goalkeepers);
+            setLoading(false);
         });
         getAllDefender().then(({defenders}) => {
-            setAllDefender(defenders);
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
+            setAllDefenders(defenders);
+            setLoading(false);
         });
         getAllAttack().then(({attack}) => {
-            setAllAttachment(attack);
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
+            setAllAttackers(attack);
+            setLoading(false);
         });
     }, [getAllPlayer]);
 
@@ -38,64 +31,52 @@ const CommandList = () => {
             {loading ? (
                 <h2>Загрузка игроков команды</h2>
             ) : (
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}>
-                    <>
-                    <h2 style={{
-                        marginBottom: '1rem'
-                    }}>Вратари</h2>
-                    {allGoalkeeoper.length > 0 ? (
-                        <div className="players-list__grid" style={{
-                            marginBottom: '1rem'
-                        }}>
-                            {allGoalkeeoper.map((player) => (
-                                <CommandItem key={player.id} player={player}/>
-                            ))}
+                <div>
+                    <section>
+                        <h2>Вратари</h2>
+                        <div className="players-list__grid"
+                             style={{
+                                 margin: "1rem auto",
+                             }}>
+                            {allGoalkeepers.length > 0 ? (
+                                allGoalkeepers.map((player) => (
+                                    <CommandItem key={player.id} player={player}/>
+                                ))
+                            ) : (
+                                <p>На данный момент в клубе нет вратарей!</p>
+                            )}
                         </div>
-                    ) : (
-                        <p style={{
-                            marginBottom: '1rem'
-                        }}>На данный момент в клубе нет вратарей!</p>
-                    )}
-                    </>
-                    <>
-                    <h2 style={{
-                        marginBottom: '1rem'
-                    }}>Защитники</h2>
-                    {allDefender.length > 0 ? (
-                        <div className="players-list__grid" style={{
-                            marginBottom: '1rem'
-                        }}>
-                            {allDefender.map((player) => (
-                                <CommandItem key={player.id} player={player}/>
-                            ))}
+                    </section>
+                    <section>
+                        <h2>Защитники</h2>
+                        <div className="players-list__grid"
+                             style={{
+                                 margin: "1rem auto",
+                             }}>
+                            {allDefenders.length > 0 ? (
+                                allDefenders.map((player) => (
+                                    <CommandItem key={player.id} player={player}/>
+                                ))
+                            ) : (
+                                <p>На данный момент в клубе нет защитников!</p>
+                            )}
                         </div>
-                    ) : (
-                        <p style={{
-                            marginBottom: '1rem'
-                        }}>На данный момент в клубе нет защитников!</p>
-                    )}
-                    </>
-                    <>
-                    <h2 style={{
-                        marginBottom: '1rem'
-                    }}>Нападающие</h2>
-                    {allAttachment.length > 0 ? (
-                        <div className="players-list__grid" style={{
-                            marginBottom: '1rem'
-                        }}>
-                            {allAttachment.map((player) => (
-                                <CommandItem key={player.id} player={player}/>
-                            ))}
+                    </section>
+                    <section>
+                        <h2>Нападающие</h2>
+                        <div className="players-list__grid"
+                             style={{
+                                 margin: "1rem auto",
+                             }}>
+                            {allAttackers.length > 0 ? (
+                                allAttackers.map((player) => (
+                                    <CommandItem key={player.id} player={player}/>
+                                ))
+                            ) : (
+                                <p>На данный момент в клубе нет нападающих!</p>
+                            )}
                         </div>
-                    ) : (
-                        <p style={{
-                            marginBottom: '1rem'
-                        }}>На данный момент в клубе нет нападающих!</p>
-                    )}
-                    </>
+                    </section>
                 </div>
             )}
         </div>

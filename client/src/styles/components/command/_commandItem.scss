@@ -2,12 +2,13 @@
   &-item {
     width: 100%;
     border-radius: 5px;
+    overflow: hidden; /* Ensures the image does not overflow the container */
 
     &__image {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover; /* Makes the image cover the entire container */
       border-radius: 5px;
-      margin-bottom: 10px;
     }
 
     &__title {
