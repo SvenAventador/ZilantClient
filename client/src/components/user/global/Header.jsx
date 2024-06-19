@@ -24,9 +24,11 @@ import {
     PERSONAL_PATH
 } from "../../../utils/utils";
 import {useUser} from "../../../store/User";
+import {useCart} from "../../../store/Cart";
 
 const Header = () => {
     const {user} = useUser()
+    const {cart} = useCart()
     const history = useNavigate()
 
     return (
@@ -62,7 +64,7 @@ const Header = () => {
                                      style={{
                                          marginRight: '1rem'
                                      }}
-                                     onClick={() => history(CART_PATH + "/" + user.id)}>
+                                     onClick={() => history(CART_PATH + "/" + cart)}>
                                 <Cart/>
                                 <span>Корзина</span>
                             </div>

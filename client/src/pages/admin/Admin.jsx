@@ -27,6 +27,7 @@ import Match from "../../components/admin/Match";
 import Gallery from "../../components/admin/Gallery";
 import Merchandise from "../../components/admin/Merchandise";
 import Personal from "../../components/admin/Personal";
+import Orders from "../../components/admin/Orders";
 
 const Admin = () => {
     const history = useNavigate()
@@ -69,8 +70,9 @@ const Admin = () => {
         getItem('Мерч', '4', <ShopOutlined/>, () => setSelectedMenuItem('merchandise')),
         getItem('Новости', '5', <ReadOutlined/>, () => setSelectedMenuItem('news')),
         getItem('Игроки', '6', <UserOutlined/>, () => setSelectedMenuItem('players')),
-        getItem('Руководство', '7', <UserOutlined />, ()=> setSelectedMenuItem('team')),
-        getItem('Выход', '8', <LogoutOutlined/>, () => {
+        getItem('Руководство', '7', <UserOutlined/>, () => setSelectedMenuItem('team')),
+        getItem('Заказы', '8', <ShopOutlined/>, () => setSelectedMenuItem('order')),
+        getItem('Выход', '9', <LogoutOutlined/>, () => {
             logoutUser().then(() => {
                 Swal.fire({
                     title: "Внимание",
@@ -108,17 +110,18 @@ const Admin = () => {
                 </div>
                 <Menu defaultSelectedKeys={['1']}
                       mode="inline"
-                      items={items} />
+                      items={items}/>
             </Sider>
             <Layout className="site-layout">
                 <Layout.Content>
                     {selectedMenuItem === 'news' && <News/>}
-                    {selectedMenuItem === 'merchandise' && <Merchandise />}
+                    {selectedMenuItem === 'merchandise' && <Merchandise/>}
                     {selectedMenuItem === 'teams' && <Club/>}
                     {selectedMenuItem === 'players' && <Player/>}
                     {selectedMenuItem === 'matches' && <Match/>}
                     {selectedMenuItem === 'galleries' && <Gallery/>}
-                    {selectedMenuItem === 'team' && <Personal />}
+                    {selectedMenuItem === 'team' && <Personal/>}
+                    {selectedMenuItem === 'order' && <Orders />}
                 </Layout.Content>
             </Layout>
         </Layout>

@@ -88,10 +88,10 @@ const AdminMerchandise = (props) => {
             })
         }
 
-        if (!merchandisePrice || merchandisePrice < 1000) {
+        if (!merchandisePrice || merchandisePrice < 1000 || merchandisePrice > 9999) {
             return api.error({
                 message: 'Внимание!',
-                description: 'Пожалуйста, введите корректную цену мерча (не менее 1000 рублей)!',
+                description: 'Пожалуйста, введите корректную цену мерча (не менее 1000 и не более 9999 рублей)!',
                 className: 'custom-class',
                 style: {
                     width: 600

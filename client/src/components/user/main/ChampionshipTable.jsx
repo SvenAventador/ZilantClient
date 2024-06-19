@@ -7,7 +7,6 @@ const ChampionshipTable = () => {
     const [clubs, setClubs] = React.useState([])
     React.useEffect(() => {
         getAllClub().then(({clubs}) => {
-            console.log(clubs)
             setClubs(clubs)
         })
     }, [getAllClub])

@@ -1,0 +1,43 @@
+.main-content {
+  width: 1430px;
+  padding: 0 40px;
+  margin: 2rem auto;
+}
+
+.cart {
+  flex: 3;
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.cart-item img {
+  width: 100px;
+  height: auto;
+}
+
+.order-summary {
+  margin-top: 2rem;
+  margin-right: 2rem;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  padding: 40px 50px 20px;
+  text-align: left;
+  height: max-content;
+  background-color: #cccccc;
+}
+
+.order-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+}

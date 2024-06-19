@@ -9,7 +9,8 @@ const MerchList = () => {
 
     React.useEffect(() => {
         getAllMerch().then(({merchandises}) => {
-            setAllMerch(merchandises);
+            const availableMerch = merchandises.filter(merch => merch.merchandiseAmount > 0);
+            setAllMerch(availableMerch);
             setTimeout(() => {
                 setLoading(false);
             }, 2000);

@@ -2,26 +2,32 @@ import React from 'react';
 import {useUser} from "./store/User";
 import logo from './assets/img/logo.png'
 import SiteNavigation from "./components/Routes";
+import {useCart} from "./store/Cart";
 
 const App = () => {
     const [isLoading, setIsLoading] = React.useState(true)
     let {
+        user,
         checkUser
     } = useUser()
+    let {
+        getOne
+    } = useCart()
 
     React.useEffect(() => {
-        if (localStorage.getItem('token')) {
-            setTimeout(() => {
-                checkUser().finally(() => {
-                    setIsLoading(false)
+        const handleCheckUser = async () => {
+            if (localStorage.getItem('token')) {
+                await checkUser().then(async () => {
+                    await getOne(user?.id);
                 })
-            }, 2500)
-        } else {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 2500)
+            }
+            setIsLoading(false);
         }
-    }, [checkUser])
+
+        const timer = setTimeout(handleCheckUser, 2500)
+
+        return () => clearTimeout(timer)
+    }, [checkUser, getOne, user?.id]);
 
     if (isLoading) {
         return <div className="loader">
