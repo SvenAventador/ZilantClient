@@ -15,7 +15,7 @@ import {
     MAIN_PATH,
     MEDIA_PATH,
     MERCHANDISE_PATH,
-    NEWS_PATH,
+    NEWS_PATH, ORDER_PATH,
     PERSONAL_PATH,
     REGISTRATION_PATH
 } from "../utils/utils";
@@ -33,6 +33,7 @@ import News from "../pages/user/navigation/News";
 import CurrentNews from "../pages/user/CurrentNews";
 import CurrentGallery from "../pages/user/CurrentGallery";
 import Cart from "../pages/user/Cart";
+import MyOrder from "../pages/user/MyOrder";
 
 const Layout = ({children}) => {
     return (
@@ -69,10 +70,16 @@ const SiteNavigation = () => {
                                <CurrentNews/>
                            </Layout>
                        }/>
-                <Route path={GALLERY_PATH + '/:id'}
+                <Route path={GALLERY_PATH + '/video' + '/:id'}
                        element={
                            <Layout>
-                               <CurrentGallery/>
+                               <CurrentGallery photo={false} video={true}/>
+                           </Layout>
+                       }/>
+                <Route path={GALLERY_PATH + '/photo' + '/:id'}
+                       element={
+                           <Layout>
+                               <CurrentGallery photo={true} video={false}/>
                            </Layout>
                        }/>
                 <Route path={CART_PATH + '/:id'}
@@ -81,10 +88,24 @@ const SiteNavigation = () => {
                                <Cart/>
                            </Layout>
                        }/>
-                <Route path={CHAMPIONSHIP_PATH}
+                <Route path={ORDER_PATH + '/:id'}
                        element={
                            <Layout>
-                               <Championship/>
+                               <MyOrder/>
+                           </Layout>
+                       }/>
+                <Route path={CHAMPIONSHIP_PATH + '/table'}
+                       element={
+                           <Layout>
+                               <Championship table={true}
+                                             calendar={false}/>
+                           </Layout>
+                       }/>
+                <Route path={CHAMPIONSHIP_PATH + '/calendar'}
+                       element={
+                           <Layout>
+                               <Championship table={false}
+                                             calendar={true}/>
                            </Layout>
                        }/>
                 <Route path={CLUB_PATH}
@@ -99,10 +120,18 @@ const SiteNavigation = () => {
                                <Command/>
                            </Layout>
                        }/>
-                <Route path={MEDIA_PATH}
+                <Route path={MEDIA_PATH + '/photo'}
                        element={
                            <Layout>
-                               <Media/>
+                               <Media photo={true}
+                                      video={false}/>
+                           </Layout>
+                       }/>
+                <Route path={MEDIA_PATH + '/video'}
+                       element={
+                           <Layout>
+                               <Media photo={false}
+                                      video={true}/>
                            </Layout>
                        }/>
                 <Route path={MERCHANDISE_PATH}

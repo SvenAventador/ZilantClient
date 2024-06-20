@@ -111,7 +111,7 @@ const MainNews = () => {
                     marginRight: 0,
                     paddingRight: 0
                 }}>
-                    <img src={logo} />
+                    <img src={logo}  alt="club team"/>
                 </div>
             )}
         </div>

@@ -162,7 +162,11 @@ const ClubModal = (props) => {
                        </Button>
                    ]}>
                 <Input value={clubName}
-                       onChange={(e) => setClubName(e.target.value)}
+                       onChange={(e) => {
+                           if (!/\d/.test(e.target.value)) {
+                               setClubName(e.target.value);
+                           }
+                       }}
                        style={{marginBottom: '1rem'}}
                        placeholder="Введите название клуба..."
                 />

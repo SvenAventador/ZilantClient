@@ -1,20 +1,18 @@
 import React from 'react';
-import {useGallery} from "../../../store/Gallery";
-import MediaItem from "./MediaItem";
+import {getAll} from "../../../../http/video";
+import VideoItem from "./VideoItem";
 
-const MediaList = () => {
-    const {getAllGallery} = useGallery();
+const VideoList = () => {
     const [allGallery, setAllGallery] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
-
     React.useEffect(() => {
-        getAllGallery().then(({galleries}) => {
+        getAll().then(({galleries}) => {
             setAllGallery(galleries);
             setTimeout(() => {
                 setLoading(false);
             }, 2000);
         });
-    }, [getAllGallery]);
+    }, []);
 
     return (
         <div className="gallery-list">
@@ -25,7 +23,7 @@ const MediaList = () => {
                     <div className="gallery-list__grid">
                         {
                             allGallery.map((gallery) => (
-                                <MediaItem key={gallery.id}
+                                <VideoItem key={gallery.id}
                                            gallery={gallery}/>
                             ))
                         }
@@ -38,4 +36,4 @@ const MediaList = () => {
     );
 };
 
-export default MediaList;
+export default VideoList;

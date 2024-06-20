@@ -4,6 +4,7 @@ import {useUser} from "../../store/User";
 import {MAIN_PATH} from "../../utils/utils";
 import Swal from "sweetalert2";
 import {
+    BookOutlined,
     FileImageOutlined,
     LogoutOutlined,
     MenuFoldOutlined,
@@ -25,6 +26,7 @@ import Club from "../../components/admin/Club";
 import Player from "../../components/admin/Player";
 import Match from "../../components/admin/Match";
 import Gallery from "../../components/admin/Gallery";
+import History from "../../components/admin/History";
 import Merchandise from "../../components/admin/Merchandise";
 import Personal from "../../components/admin/Personal";
 import Orders from "../../components/admin/Orders";
@@ -42,18 +44,6 @@ const Admin = () => {
         logoutUser
     } = useUser()
 
-    const handleLogout = () => {
-        logoutUser().then(() => {
-            Swal.fire({
-                title: "Внимание",
-                text: 'До скорых встреч, друг! Ждем тебя снова! ❤️',
-                icon: "success"
-            }).then(() => {
-                history(MAIN_PATH);
-            })
-        })
-    }
-
     function getItem(label, key, icon, onClick) {
         return {
             label,
@@ -65,14 +55,15 @@ const Admin = () => {
 
     const items = [
         getItem('Клуб', '1', <TeamOutlined/>, () => setSelectedMenuItem('teams')),
-        getItem('Галлерея', '2', <FileImageOutlined/>, () => setSelectedMenuItem('galleries')),
-        getItem('Матчи', '3', <TrophyOutlined/>, () => setSelectedMenuItem('matches')),
-        getItem('Мерч', '4', <ShopOutlined/>, () => setSelectedMenuItem('merchandise')),
-        getItem('Новости', '5', <ReadOutlined/>, () => setSelectedMenuItem('news')),
-        getItem('Игроки', '6', <UserOutlined/>, () => setSelectedMenuItem('players')),
-        getItem('Руководство', '7', <UserOutlined/>, () => setSelectedMenuItem('team')),
-        getItem('Заказы', '8', <ShopOutlined/>, () => setSelectedMenuItem('order')),
-        getItem('Выход', '9', <LogoutOutlined/>, () => {
+        getItem('История', '2', <BookOutlined />, () => setSelectedMenuItem('history')),
+        getItem('Галлерея', '3', <FileImageOutlined/>, () => setSelectedMenuItem('galleries')),
+        getItem('Матчи', '4', <TrophyOutlined/>, () => setSelectedMenuItem('matches')),
+        getItem('Мерч', '5', <ShopOutlined/>, () => setSelectedMenuItem('merchandise')),
+        getItem('Новости', '6', <ReadOutlined/>, () => setSelectedMenuItem('news')),
+        getItem('Игроки', '7', <UserOutlined/>, () => setSelectedMenuItem('players')),
+        getItem('Руководство', '8', <UserOutlined/>, () => setSelectedMenuItem('team')),
+        getItem('Заказы', '9', <ShopOutlined/>, () => setSelectedMenuItem('order')),
+        getItem('Выход', '10', <LogoutOutlined/>, () => {
             logoutUser().then(() => {
                 Swal.fire({
                     title: "Внимание",
@@ -115,6 +106,7 @@ const Admin = () => {
             <Layout className="site-layout">
                 <Layout.Content>
                     {selectedMenuItem === 'news' && <News/>}
+                    {selectedMenuItem === 'history' && <History/>}
                     {selectedMenuItem === 'merchandise' && <Merchandise/>}
                     {selectedMenuItem === 'teams' && <Club/>}
                     {selectedMenuItem === 'players' && <Player/>}

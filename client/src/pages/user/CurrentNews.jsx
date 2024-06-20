@@ -77,7 +77,7 @@ const CurrentNews = () => {
                         ))}
                     </div>
                     {
-                        user && user.isAuth && (
+                        user && (
                             <>
                                 <div className="comments-section">
                                     <h3>Комментарии</h3>

@@ -186,7 +186,7 @@ const Cart = () => {
                     <p style={{
                         paddingBottom: '2rem'
                     }}>
-                        {allGoods.length} товара
+                        {allGoods.length === 1 ? allGoods.length + " товар" : allGoods.length > 1 && allGoods.length < 5 ? allGoods.length + " товара" : allGoods.length + " товаров"}
                     </p>
 
                     <div style={{

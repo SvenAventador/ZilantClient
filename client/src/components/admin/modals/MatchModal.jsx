@@ -42,7 +42,7 @@ const MatchModal = (props) => {
                 }
             });
         }
-    }, [getOneClub, oneMatch])
+    }, [getOneClub, oneMatch, open])
 
     React.useEffect(() => {
         if (open && oneMatch) {
@@ -63,13 +63,22 @@ const MatchModal = (props) => {
 
     const updateOrInsertData = async () => {
         const values = await form.validateFields()
-        console.log(values)
 
         const match = new FormData()
         !oneMatch && match.append('matchDate', values.matchDate.format('YYYY-MM-DD'))
         !oneMatch && match.append('matchTime', values.matchTime.format('HH:mm:ss'))
         !oneMatch && match.append('icePlace', values.icePlace)
         !oneMatch ? match.append('hockeyClubId', values.club) : match.append('hockeyClubId', oneMatch?.hockeyClubId)
+
+        if (values.zilantGoals === values.otherGoals)
+            return api.error({
+                message: 'Внимание!',
+                description: 'В хоккее матч не может закончится с одинаковым счетом!',
+                className: 'custom-class',
+                style: {
+                    width: 600
+                }
+            })
 
         let gameScore
         if (parseInt(values.zilantGoals) > parseInt(values.otherGoals) && parseInt(values.outcome) === 1)

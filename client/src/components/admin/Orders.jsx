@@ -40,10 +40,9 @@ const Orders = () => {
             merchandise: item.merchandise
         }));
 
-        return <Table
-            columns={columns}
-            dataSource={data}
-            pagination={false}/>;
+        return <Table columns={columns}
+                      dataSource={data}
+                      pagination={false}/>;
     };
 
     const columns = [
@@ -55,7 +54,7 @@ const Orders = () => {
         {title: 'Дата заказа', dataIndex: 'dateOrder', key: 'dateOrder'},
         {title: 'Сумма заказа', dataIndex: 'fullPrice', key: 'fullPrice'},
         {
-            title: 'Status',
+            title: 'Статус доставки',
             dataIndex: 'deliveryStatusId',
             key: 'deliveryStatusId',
             render: (_, record) => (
@@ -86,27 +85,26 @@ const Orders = () => {
     };
 
     return (
-        <Table
-            columns={columns}
-            expandable={{
-                expandedRowRender: (record) => (
-                    <Table
-                        columns={orderColumns}
-                        dataSource={record.orders.map(order => ({
-                            key: order.id,
-                            ...order
-                        }))}
-                        pagination={false}
-                        expandable={{
-                            expandedRowRender
-                        }}
-                    />
-                )
-            }}
-            dataSource={orders.map(user => ({
-                key: user.id,
-                ...user
-            }))}
+        <Table columns={columns}
+               expandable={{
+                   expandedRowRender: (record) => (
+                       <Table
+                           columns={orderColumns}
+                           dataSource={record.orders.map(order => ({
+                               key: order.id,
+                               ...order
+                           }))}
+                           pagination={false}
+                           expandable={{
+                               expandedRowRender
+                           }}
+                       />
+                   )
+               }}
+               dataSource={orders.map(user => ({
+                   key: user.id,
+                   ...user
+               }))}
         />
     );
 };

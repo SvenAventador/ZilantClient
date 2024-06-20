@@ -4,7 +4,7 @@ import Modal from "../../modal/Modal";
 import {format} from "date-fns";
 import {ru} from "date-fns/locale";
 
-const Calendar = () => {
+const CalendarComponent = () => {
     const [matches, setMatches] = React.useState([]);
     const {getAllMatch} = useMatch();
 
@@ -67,7 +67,7 @@ const Calendar = () => {
                 fontSize: '25pt',
                 color: '#162746'
             }}>
-                Расписание матчей
+                Календарь игр
             </h1>
             <div className="calendar-header">
                 <button onClick={handlePrevDay}>&lt;</button>
@@ -161,4 +161,4 @@ const Calendar = () => {
     );
 };
 
-export default Calendar;
+export default CalendarComponent;

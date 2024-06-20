@@ -77,18 +77,48 @@
       .header__bottom-list {
         @include flex-all-sb;
         background-color: #03346E;
-      }
+        position: relative;
 
-      .header__bottom-item {
-        padding: 2rem;
-        color: #FFF;
-        font-family: Raleway, sans-serif;
-        font-size: 20pt;
-      }
+        .header__bottom-item {
+          padding: 2rem;
+          color: #FFF;
+          font-family: Raleway, sans-serif;
+          font-size: 20pt;
+          position: relative;
 
-      .header__bottom-item:last-child {
-        background-color: #CACCE0;
-        color: #03346E;
+          &:hover .dropdown {
+            display: block;
+          }
+
+          .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #FFF;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+
+            li {
+              padding: 1rem;
+              white-space: nowrap;
+
+              a {
+                color: #000;
+                text-decoration: none;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+
+        .header__bottom-item:last-child {
+          background-color: #CACCE0;
+          color: #03346E;
+        }
       }
     }
   }

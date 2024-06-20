@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import {usePlayer} from "../../../store/Player";
 import PersonalItem from "./PersonalItem";
 import {getAll} from "../../../http/personal";
 

@@ -5,7 +5,7 @@ import {
     logout,
     registration
 } from '../http/auth';
-import {edit} from '../http/personal'
+import {edit} from "../http/personalData'";
 
 export const useUser = create((set) => ({
     user: null,

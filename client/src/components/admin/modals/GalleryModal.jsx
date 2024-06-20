@@ -6,7 +6,7 @@ import {
     notification,
     Upload
 } from "antd";
-import {UploadOutlined} from "@ant-design/icons";
+import {PlusOutlined} from "@ant-design/icons";
 import {useGallery} from "../../../store/Gallery";
 
 const {TextArea} = Input
@@ -25,6 +25,8 @@ const GalleryModal = (props) => {
     const [galleryDescription, setGalleryDescription] = React.useState('')
     const [image, setImage] = React.useState([])
     const [imageUploadKey, setImageUploadKey] = React.useState(Date.now())
+    const [video, setVideo] = React.useState([])
+    const [videoUploadKey, setVideoUploadKey] = React.useState(Date.now())
 
     React.useEffect(() => {
         if (!open) {
@@ -32,6 +34,8 @@ const GalleryModal = (props) => {
             setGalleryDescription('')
             setImage([])
             setImageUploadKey(Date.now())
+            setVideo([])
+            setVideoUploadKey(Date.now())
         }
     }, [open])
 
@@ -64,7 +68,6 @@ const GalleryModal = (props) => {
         image.forEach((images) => {
             gallery.append('image', images)
         })
-
         createGallery(gallery).then(() => {
             api.success({
                 message: 'Внимание!',
@@ -125,16 +128,31 @@ const GalleryModal = (props) => {
                               marginBottom: '1rem'
                           }}
                           onChange={(e) => setGalleryDescription(e.target.value)}/>
-                <Upload multiple
-                        accept=".png,.jpg,.jpeg"
-                        key={imageUploadKey}
-                        listType='picture'
-                        onChange={(images) => setImage(images.fileList.map((image) => image.originFileObj))}
-                        beforeUpload={() => false}>
-                    <Button icon={<UploadOutlined/>}>
-                        Выберите изображения
-                    </Button>
-                </Upload>
+                <div style={{
+                    width: '100%',
+                    marginBottom: '20px'
+                }}>
+                    <Upload multiple
+                            accept=".png,.jpg,.jpeg"
+                            key={imageUploadKey}
+                            listType="picture-card"
+                            onChange={(images) => setImage(images.fileList.map((image) => image.originFileObj))}
+                            beforeUpload={() => false}>
+                        <button style={{
+                                border: 0,
+                                background: 'none',
+                            }}
+                            type="button">
+                            <PlusOutlined/>
+                            <div style={{
+                                    marginTop: 8,
+                                }}>
+                                Картинки
+                            </div>
+                        </button>
+                    </Upload>
+                </div>
+
             </Modal>
         </>
     );

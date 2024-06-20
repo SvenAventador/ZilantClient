@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import leagueLogo from '../../../assets/img/header/SHL.png'
 import logo from '../../../assets/img/logo.png'
 import {ReactComponent as Telegram} from "../../../assets/img/header/socials/tg.svg";
@@ -27,58 +27,75 @@ import {useUser} from "../../../store/User";
 import {useCart} from "../../../store/Cart";
 
 const Header = () => {
-    const {user} = useUser()
-    const {cart} = useCart()
-    const history = useNavigate()
+    const {user} = useUser();
+    const {cart} = useCart();
+    const history = useNavigate();
+    const [championshipDropdown, setChampionshipDropdown] = useState(false);
+    const [mediaDropdown, setMediaDropdown] = useState(false);
 
     return (
         <header className="header">
             <div className="header__top">
                 <div className="header__container">
                     <div className="header__top-left">
-                        <img src={leagueLogo}
-                             alt="league shl"/>
+                        <NavLink to={'https://shlru.ru/'}>
+                            <img src={leagueLogo} alt="league shl"/>
+                        </NavLink>
                     </div>
                     <div className="header__top-right">
-                        <Telegram width={100}/>
-                        <VKontakte width={100}/>
-                        <YouTube width={100}/>
+                        <NavLink to={'https://t.me/HC_KAI'}>
+                            <Telegram width={100}/>
+                        </NavLink>
+                        <NavLink to={'https://vk.com/hc_kai'}>
+                            <VKontakte width={100}/>
+                        </NavLink>
+                        <NavLink to={'https://m.youtube.com/@hckai'}>
+                            <YouTube width={100}/>
+                        </NavLink>
                     </div>
                 </div>
             </div>
             <div className="header__middle">
                 <div className="header__container">
-                    <div className="header__middle-left">
+                    <div className="header__middle-left"
+                         style={{
+                             cursor: 'pointer'
+                         }}
+                         onClick={() => history(MAIN_PATH)}>
                         <img src={logo}
                              alt="logo"/>
-                        <span>ХК КАИ Зилант</span>
+                        <span>
+                            ХК КАИ Зилант
+                        </span>
                     </div>
                     <div style={{
                         display: "flex",
                         flexFlow: "row wrap",
                         alignItems: "center"
                     }}>
-                        {
-                            user && (
-                                <div className="header__middle-right"
-                                     style={{
-                                         marginRight: '1rem'
-                                     }}
-                                     onClick={() => history(CART_PATH + "/" + cart)}>
-                                <Cart/>
+                        {user && (
+                            <div className="header__middle-right"
+                                 style={{marginRight: '1rem'}}
+                                 onClick={() => history(CART_PATH + "/" + cart)}>
+                                <Cart style={{fill: "black", display: "block"}}/>
                                 <span>Корзина</span>
                             </div>
-                            )
-                        }
+                        )}
                         <div className="header__middle-right"
                              onClick={() => {
                                  user ? history(`${PERSONAL_PATH}/${user.id}`) : history(LOGIN_PATH);
                              }}>
                             <Auth/>
-                            <span>{user ? user.userName : 'Войти'}</span>
+                            <span style={{
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                maxWidth: '100px'
+                            }}>
+                                {user ? user.userName : 'Войти'}
+                            </span>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div className="header__bottom">
@@ -94,10 +111,26 @@ const Header = () => {
                                 Новости
                             </NavLink>
                         </li>
-                        <li className="header__bottom-item">
-                            <NavLink to={CHAMPIONSHIP_PATH}>
+                        <li className="header__bottom-item"
+                            onMouseEnter={() => setChampionshipDropdown(true)}
+                            onMouseLeave={() => setChampionshipDropdown(false)}>
+                            <div>
                                 Чемпионат
-                            </NavLink>
+                            </div>
+                            {championshipDropdown && (
+                                <ul className="dropdown">
+                                    <li>
+                                        <NavLink to={CHAMPIONSHIP_PATH + '/table'}>
+                                            Турнирная таблица
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={CHAMPIONSHIP_PATH + "/calendar"}>
+                                            Календарь
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         <li className="header__bottom-item">
                             <NavLink to={COMMAND_PATH}>
@@ -109,10 +142,26 @@ const Header = () => {
                                 Клуб
                             </NavLink>
                         </li>
-                        <li className="header__bottom-item">
-                            <NavLink to={MEDIA_PATH}>
+                        <li className="header__bottom-item"
+                            onMouseEnter={() => setMediaDropdown(true)}
+                            onMouseLeave={() => setMediaDropdown(false)}>
+                            <div >
                                 Медиа
-                            </NavLink>
+                            </div>
+                            {mediaDropdown && (
+                                <ul className="dropdown">
+                                    <li>
+                                        <NavLink to={MEDIA_PATH + '/photo'}>
+                                            Фото
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={MEDIA_PATH + '/video'}>
+                                            Видео
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         <li className="header__bottom-item">
                             <NavLink to={MERCHANDISE_PATH}>

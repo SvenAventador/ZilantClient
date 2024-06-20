@@ -32,6 +32,7 @@ const Merchandise = () => {
             title: 'Название мерча',
             dataIndex: 'merchandiseName',
             key: 'merchandiseName',
+            ellipsis: true
         },
         {
             title: 'Описание мерча',

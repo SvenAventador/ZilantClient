@@ -1,15 +1,14 @@
 import React from 'react';
-import {GALLERY_PATH} from "../../../utils/utils";
+import {GALLERY_PATH} from "../../../../utils/utils";
 import {useNavigate} from "react-router-dom";
 
 const MediaItem = (props) => {
     const {
         gallery
     } = props
-
     const history = useNavigate()
     const handleClick = () => {
-        history(`${GALLERY_PATH}/${gallery.id}`)
+        history(`${GALLERY_PATH}/photo/${gallery.id}`)
     }
 
     return (
